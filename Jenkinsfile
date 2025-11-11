@@ -16,5 +16,10 @@ pipeline {
         }
       }
     }
+    stage('deploy to tomcat server'){
+      steps{sshagent(['tomcat-deployment'])
+        sh 'scp -o StrictHostKeyChecking=no [jenkins:]/webapp/target/webapp.war ec2-user@13.201.185.162:/var/lib/tomcat9/webapps/ROOT/index.html'
+      }
+    }
   }
 }
