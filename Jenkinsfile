@@ -1,4 +1,3 @@
-
 pipeline {
   agent any
   stages {
@@ -22,7 +21,6 @@ pipeline {
           sh 'mvn clean package'
         }
       }
-    }
     }
   }
 }
