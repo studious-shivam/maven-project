@@ -17,10 +17,10 @@ pipeline {
       }
     }
     stage('deploy to tomcat server'){
-      steps{sshagent(['tomcat-deployment'])
-        sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ubuntu@13.201.185.162:/var/lib/tomcat9/webapps/ROOT/'
+      steps{sshagent(['tomcat-deployment']){
+        sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ubuntu@13.201.185.162:/tmp/'
         //sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.20.221:/usr/share/tomcat/webapps'
-      
+      }
       }
     }
   }
